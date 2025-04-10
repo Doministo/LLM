@@ -1,0 +1,89 @@
+/* === Základní styly (ponechány pro kontext, ale beze změny) === */
+.stMainBlockContainer { padding-top: 3rem; }
+.user-message {
+    background-color: #2e2e2e; padding: 0.75rem 1rem; border-radius: 1rem;
+    border: 1px solid #444; margin-top: 0.5rem; width: fit-content;
+    max-width: 75%; word-wrap: break-word; line-height: 1.5;
+    margin-left: auto; margin-right: 0; display: block; text-align: left;
+}
+.bot-message {
+    background-color: #1e1e1e; padding: 0.75rem 1rem; border-radius: 1rem;
+    border: 1px solid #444; margin-top: 0.5rem; width: fit-content;
+    max-width: 75%; word-wrap: break-word; line-height: 1.5;
+    margin-left: 0; margin-right: auto; display: block; text-align: left;
+}
+.user-message strong { color: #fdd835; }
+.bot-message strong { color: #03dac6; }
+.stMarkdown { padding: 0; margin: 0; }
+[data-testid="stSidebar"] { background-color: #111111 !important; }
+.stTextArea textarea { background-color: #1e1e1e !important; color: #ffffff !important; }
+.chat-container { max-height: 65vh; overflow-y: auto; margin-bottom: 1rem; }
+
+/* === Styly POUZE pro think-box a jeho animaci (Zvýšená specificita) === */
+details.think-box { /* Cílíme na 'details' element s třídou 'think-box' */
+    background-color: #262626;
+    border-radius: 8px;
+    margin: 1rem 0;
+    border: 1px solid #333;
+    overflow: hidden; /* Klíčové pro oříznutí obsahu */
+    padding-bottom: 0px; /* Nastavený spodní padding */
+}
+
+details.think-box > summary { /* Přímý potomek summary */
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    font-style: italic;
+    color: #bbb;
+    list-style: none;
+    position: relative;
+    display: block;
+    outline: none; /* Odstranění možného outline při fokusu */
+}
+
+details.think-box > summary::-webkit-details-marker { display: none; }
+details.think-box > summary::marker { display: none; }
+
+/* Vlastní šipka */
+details.think-box > summary::after {
+    content: "\25BC"; /* Unicode pro šipku dolů */
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    color: #888;
+    transition: transform 0.3s ease-in-out; /* Animace POUZE pro šipku */
+}
+
+/* Otočení šipky při otevření */
+details.think-box[open] > summary::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Obsah - cílení na DIV s třídou think-content uvnitř details */
+details.think-box > div.think-content {
+    color: #ccc;
+    font-style: italic;
+    font-size: 0.9em;
+    line-height: 1.5;
+    padding: 0 1rem; /* Počáteční padding jen do stran */
+    margin: 0;
+    /* --- Klíčové pro animaci --- */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    /* --- Explicitní definice transition --- */
+    transition-property: max-height, opacity, padding;
+    transition-duration: 0.4s, 0.3s, 0.4s; /* Doba trvání pro výšku, opacity, padding */
+    transition-timing-function: ease-in-out;
+    /* transition-delay: 0s, 0.1s, 0s; /* Mírné zpoždění opacity */
+       /* Zkusíme bez zpoždění pro zjednodušení */
+}
+
+/* Styl obsahu, když je rodič [open] */
+details.think-box[open] > div.think-content {
+    max-height: 500px; /* Nastavíme max výšku pro otevření */
+    opacity: 1; /* Zviditelníme */
+    padding-top: 0.5rem; /* Přidáme horní/dolní padding plynule */
+    padding-bottom: 1rem;
+}

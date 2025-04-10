@@ -1,0 +1,12 @@
+✅	zkontrolovat GPU offloading - dát pryč
+✅	zpravit sidebar - ukazovat pamět prohlížení
+✅	zpravit paměť LLM??
+✅	dát nalevo text v bublinách
+✅	emigrovat z docekru na Ollama.exe
+X	optimalizace
+✅	zpravit výběr modelů
+✅	zkontrolovat zápisové okno "přemýšlení"
+✅	opravit plugin Wikipedie
+✅	omezit velikost náhledu u oken pluginu - souboru
+X	paměť optimalizace
+X	pokyny (jak se má chovat LLM v konverzaci)
